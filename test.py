@@ -24,5 +24,5 @@ bg_image=np.zeros((500, 1000))
 while True:
     x, y = win32api.GetCursorPos()
     z = np.array([x,y])
-    f.predict()
+    x,y=f.predict()
     f.update(np.asarray([z]))
