@@ -77,4 +77,23 @@ def demo_kalman_xy():
     plt.plot(kalman_x, kalman_y, 'g-')
     plt.show()
 
-demo_kalman_xy()
+
+
+# def predict(x, y):
+#     result = []
+#     R = 0.01 ** 2
+#     for meas in zip(x, y):
+#         x, P = kalman_xy(x, P, meas, R)
+#         result.append((x[:2]).tolist())
+#     kalman_x, kalman_y = zip(*result)
+#     return kalman_x, kalman_y
+
+x = np.matrix('0. 0. 0. 0.').T
+P = np.matrix(np.eye(4))*1000 # initial uncertainty
+N = 20
+R = 0.01**2
+
+#demo_kalman_xy()
+def predict(xin,yin):
+    x, P = kalman_xy(x, P, (xin,yin), R)
+    return x[:2].tolist()
