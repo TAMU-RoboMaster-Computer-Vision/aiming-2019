@@ -1,6 +1,7 @@
 import win32api
 import numpy as np
 from filterpy.common import kinematic_kf
+from filterpy.kalman import ExtendedKalmanFilter
 import cv2
 import time
 import filterpy as fp
@@ -8,7 +9,7 @@ from filterpy.kalman import IMMEstimator
 np.set_printoptions(suppress=True)
 order=1
 kf1 = kinematic_kf(dim=2, order=order)
-kf2 = kinematic_kf(dim=2, order=order)
+kf2 = ExtendedKalmanFilter(4, 2)
 # do some settings of x, R, P etc. here, I'll just use the defaults
 kf2.Q *= 0   # no prediction error in second filter
 filters = [kf1, kf2]
